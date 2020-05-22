@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+  <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+</head>
+
+
+<body>
+
+
+<div id="info17" style="display: none;" >
+  <div style="margin-left: 10px;margin-top: 20px">
+    <button class="ap">¥</button>
+    <button class="ad">%</button>
+    <input type="text" placeholder="请输入优惠的金额" class="youhui">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".ad").click(function(){
+                $(".youhui").slideToggle();
+            });
+        });
+    </script>
+  </div>
+  <div style="margin-top: 30px;margin-left: 20px">
+    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: -5px">BOSS签单</button>
+    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">门店活动</button>
+    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">共建人签单</button>
+  </div>
+  <div style="margin-top:20px">
+    <input type="text" placeholder="其他原因" style="height: 100px;width: 560px;margin-left: 15px">
+  </div>
+  <div style="margin-top: 50px;margin-left: 460px">
+    <button style="background-color: #EA5433;color: white;border-style: none;width: 120px;height: 30px">确定</button>
+  </div>
+</div>
+
+
+
+<div class="site-demo-button" id="layerDemo17" >
+  <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="background-color: transparent">
+    <img src="../../../layuiadmin/layui/images/优惠1.png"
+         style="background-repeat: no-repeat; width: 110%; height: 50px; text-align: center; border-radius: 2px; font-size: 30px;">
+    <div style="margin-left: 5px;z-index: 999;position: relative;margin-top: -40px">折扣</div>
+  </button>
+</div>
+
+
+
+<script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+
+    layui.use('layer', function(){
+        var $ = layui.jquery, layer = layui.layer;
+        var active = {
+
+            offset: function(othis){
+                var type = othis.data('type')
+                    ,text = othis.text();
+
+                layer.open({
+                    type: 1
+                    ,offset: ['130px','450px']
+                    ,title:'折扣'
+                    ,area: ['600px', '400px']
+                    ,id: 'layerDemo17'+type
+                    ,content: $("#info17").html()
+                    ,btn: 0
+                    ,btnAlign: 'c' //按钮居中
+                    ,shade: 0.3 //不显示遮罩
+                    ,yes: function(){
+                        layer.closeAll();
+                    }
+                });
+            }
+        };
+
+        $('#layerDemo17 .layui-btn').on('click', function(){
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+        });
+
+        $(document).on('click','.ad', function(){
+            $('.youhui').attr('placeholder',"请输入优惠的折扣");
+
+        });
+        $(document).on('click','.ap', function(){
+            $('.youhui').attr('placeholder',"请输入优惠的金额");
+
+        });
+
+    });
+
+
+
+</script>
+
+
+</body>
+</html>

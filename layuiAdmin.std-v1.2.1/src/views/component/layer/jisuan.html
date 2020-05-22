@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题</title>
+    <script type="text/javascript">
+        function sum(obj) {
+            var z = document.getElementById("z");
+            var a = document.getElementById("a");
+
+            if(a.value!='')
+            {
+                h.value=parseInt(z.value)-parseInt(a.value);
+            }
+
+        }
+    </script>
+</head>
+<body>
+总分：<input type="text" id="z" onkeyup="sum(this);" />
+<input type="text" id="a" onkeyup="sum(this);" />
+
+还剩：<input type='text' id='h' style="border:0px solid white; width:25px" />
+</body>
+
+</html>

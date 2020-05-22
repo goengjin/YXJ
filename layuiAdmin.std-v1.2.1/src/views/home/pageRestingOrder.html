@@ -1,0 +1,614 @@
+﻿<!DOCTYPE html>
+<html xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <script src="../../../../js/template-web.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script src="../../../../js/template-web.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+
+
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md4" id="guadan">
+            <div class="layui-card">
+                <div class="layui-card-body layui-text" style="height:730px;">
+                    <a href="./pageOrder.html" class="layui-btn layui-btn-primary"
+                    >< 返回点单</a>
+                        <div id="restingOrderShow" style="max-height:700px;position:relative;overflow:auto;">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="layui-col-md8">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card" style="height: 750px">
+                        <div class="layui-tab layui-tab-brief layadmin-latestData" style="height: 750px">
+                            <ul class="layui-tab-title">
+                                <li style="color: #EA5433">
+                                    <img src="../../layuiadmin/layui/images/图层6.png" style="width: 20px;height: 25px">
+                                    &nbsp;助手
+                                </li>
+                                <li class="layui-this">全部</li>
+                                <li>轻食</li>
+                                <li>蛋糕</li>
+                                <li>甜品</li>
+                            </ul>
+
+                            <!--助手-->
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+
+                                    <div id="helperShow"></div>
+
+                                    <div id="ticketShow"></div>
+
+                                </div>
+
+
+                                <!--全部-->
+                                <div class="layui-tab-item">
+                                    <div id="allfoodShow"></div>
+                                </div>
+
+                                <!--轻食-->
+                                <div class="layui-tab-item">
+                                    <div id="lightfoodShow"></div>
+                                </div>
+
+                                <!-- 蛋糕-->
+                                <div class="layui-tab-item ">
+                                    <div id="cakeShow"></div>
+                                </div>
+
+                                <!--甜品-->
+                                <div class="layui-tab-item ">
+                                    <div id="sweetmentShow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'console']);
+</script>
+
+
+<!--左侧挂单信息开始-->
+<script id="restingOrderTemplate" type="text/html">
+    <dl class="layuiadmin-card-status">
+        {{each data.restinglist}}
+        <dd style="position: relative" id="menu{{$value.mid}}">
+            <div class="layui-status-img"><a href="javascript:;"><img
+                    src="{{$value.mimg}}"></a></div>
+            <div class="cv" style="margin-left: 10px;margin-top: 5px">
+                <p class="qp">¥{{$value.mprice}}</p>
+                <span><img src="../../layuiadmin/layui/images/moon.png">at {{$value.mtime}}</span>
+            </div>
+            <div class="closeb">
+                <a href="javascript:;" rel="external nofollow" data-id="{{$value.mid}}" data-opt="del"
+                   class="del">
+                    <button type="button" id="cancelbt1"></button>
+                </a>
+            </div>
+        </dd>
+        {{/each}}
+    </dl>
+</script>
+
+<script src="restingOrder.js"></script>
+<script>
+    restingOrder.render();
+</script>
+<!--左侧挂单信息结束-->
+
+
+<!--助手信息-->
+<script id="helperTemplate" type="text/html">
+    <p>上次光顾</p>
+    <ul class="layui-row layui-col-space2">
+        {{each data.lastbuy}}
+        <li class="layui-col-md2 layui-col-xs2" style="">
+            <div style="margin: 10px;border: #EEE 1px solid;">
+                <div class="site-demo-img" id="foodinformation">
+                    <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-oid="{{$value.oid}}"
+                         data-method="offset" data-type="r" style="object-fit:cover;width: 100%;height: 100%;">
+                    <cite>{{$value.oname}}</cite>
+                </div>
+                <br>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+
+
+    <p style="margin-top: 30px;margin-left: 5px">热门产品</p>
+    <div>
+        <ul class="layui-row layui-col-space2">
+            {{each data.hotproduct}}
+            <li class="layui-col-md2 layui-col-xs2">
+                <div style="margin: 10px;border: #EEE 1px solid;">
+                    <div class="site-demo-img" id="foodinformation1">
+                        <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-method="offset"
+                             data-oid="{{$value.oid}}"
+                             data-type="r">
+                        <cite>{{$value.oname}}</cite>
+                    </div>
+                    <br>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</script>
+
+
+<!--食物规格弹层开始(上次光顾)-->
+
+<div id="foodLayerShow" style="display:none">
+    <script id="fiTemplate" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.lastbuy}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplate' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplate" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</div>
+<!--食物规格弹层结束(上次光顾)-->
+
+
+<!--食物规格弹层开始(热门产品)-->
+<div id="foodLayerShow1" style="display:none">
+    <script id="fiTemplate1" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.hotproduct}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplate' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplate" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+
+        </div>
+        {{/each}}
+    </script>
+</div>
+<!--食物规格弹层结束(上次光顾)-->
+
+<script src="helper.js"></script>
+<script>
+    helper.render();
+</script>
+
+
+<!--优惠券信息-->
+<script id="ticketTemplate" type="text/html">
+    <div style="position: absolute;bottom:30px;display: block">
+        <div style="display: inline-flex;flex-direction: row;width: 100%">
+            {{each data.discountlist}}
+            <div class="flx">
+                <div class="site-demo-button" id="vipdiscount111">
+                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" data-vid="{{$value.vid}}" id="ioioio">
+                        <img src="{{$value.vimg}}" id="imgone">
+                        <div class="gi">{{$value.vname}}</div>
+                    </button>
+                </div>
+            </div>
+            {{/each}}
+
+            <div class="flx">
+                <div class="site-demo-button" id="allowance">
+                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal">
+                        <img src="../../layuiadmin/layui/images/优惠1.png" class="uui">
+                        <div class="gi">折扣</div>
+                    </button>
+                </div>
+            </div>
+            <!--折扣弹层开始-->
+
+            <div id="allowanceshow" style="display: none;">
+                <div style="margin-left: 10px;margin-top: 20px">
+                    <button class="ap">¥</button>
+                    <button class="ad">%</button>
+                    <input type="text" placeholder="请输入优惠的金额" class="youhui">
+                </div>
+                <div style="margin-top: 30px;margin-left: 20px">
+                    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: -5px">
+                        BOSS签单
+                    </button>
+                    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">
+                        门店活动
+                    </button>
+                    <button style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">
+                        共建人签单
+                    </button>
+                </div>
+                <div style="margin-top:20px">
+                    <input type="text" placeholder="其他原因" style="height: 100px;width: 560px;margin-left: 15px">
+                </div>
+                <div style="margin-top: 50px;margin-left: 460px">
+                    <button style="background-color: #EA5433;color: white;border-style: none;width: 120px;height: 30px">
+                        确定
+                    </button>
+                </div>
+            </div>
+            <!--折扣弹层结束-->
+
+            <div class="flx">
+                <div class="site-demo-button" id="giveawayshow">
+                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal"
+                            style="background-color: transparent">
+                        <img src="../../layuiadmin/layui/images/优惠1.png" class="uui">
+                        <div class="gi">赠送</div>
+                    </button>
+                </div>
+            </div>
+
+
+            <!--赠送弹层开始-->
+
+            <div id="giveaway" style="display: none;">
+                <div style="margin-top: 30px;margin-left: 20px" id="kuaijiejian">
+                    <button id="giveaway1"
+                            style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: -5px">
+                        BOSS签单
+                    </button>
+                    <button id="giveaway2"
+                            style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">
+                        门店活动
+                    </button>
+                    <button id="giveaway3"
+                            style="background-color: white;border: #EA5433 1px solid;color: #EA5433;width: 80px;height: 30px;margin-left: 10px">
+                        共建人签单
+                    </button>
+                </div>
+                <div style="margin-top:10px">
+                    <input id="reason" type="text" placeholder="其他原因"
+                           style="height: 100px;width: 560px;margin-left: 15px">
+                </div>
+                <div style="margin-top: 120px;margin-left: 460px">
+                    <button style="background-color: #EA5433;color: white;border-style: none;width: 120px;height: 30px">
+                        确定
+                    </button>
+                </div>
+            </div>
+
+            <!--赠送弹层结束-->
+
+
+            {{each data.ticketname}}
+            <div class="flx1"  data-timg="{{$value.timg}}" data-tname="{{$value.tname}}" data-tid="{{$value.tid}}">
+                <img src="{{$value.timg}}" class="quan">
+                <div id="mj">{{$value.tname}}</div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</script>
+
+
+<!--会员优惠弹层开始-->
+
+<div id="vipdiscountShow" style="display:none">
+    <script id="fiTemplate5" type="text/template">
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space10">
+                {{each data.data.discountlist}}
+                {{if $value.vid==data.currentVid}}
+                {{include 'scoreTemplate5' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplate5" type="text/html">
+        {{each vipdiscountlist}}
+        <div class="layui-col-md3 layui-col-xs3" style="margin-top: 20px" data-timg="{{$value.timg}}" data-tname="{{$value.tname}}" data-tid="{{$value.tid}}">
+            <div class="layui-card" style="height: 60px" data-id="{{$value.tid}}">
+                <button style="border-style: none;background-color: transparent" data-id="{{$value.tid}}" class="bt">
+                    <img src="{{$value.timg}}" style="height: 60px;width: 130px">
+                    <div style="margin-top:-45px;color: white;margin-right: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;{{$value.tname}}</div>
+                    <div id="kk" style="float: right;"><img class="lkl" src="../../layuiadmin/layui/images/勾.png">
+                    </div>
+                </button>
+            </div>
+
+        </div>
+        {{/each}}
+    </script>
+</div>
+<!--会员优惠弹层结束-->
+
+<script src="ticket.js"></script>
+<script>
+    ticket.render();
+</script>
+
+
+<!--全部-->
+<script id="allfoodTemplate" type="text/html">
+    <ul class="layui-row layui-col-space2">
+        {{each data.allfoodlist}}
+        <li class="layui-col-md2 layui-col-xs2">
+            <div style="margin: 10px;border: #EEE 1px solid;">
+                <div class="site-demo-img" id="foodinformationa">
+                    <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-method="offset" data-type="r"  data-oid="{{$value.oid}}">
+                    <cite>{{$value.oname}}</cite>
+                </div>
+                <br>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<!--食物规格弹层开始(全部)-->
+
+<div id="foodLayerShowa" style="display:none">
+    <script id="fiTemplatea" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.allfoodlist}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplatea' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplatea" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</div>
+<!--食物规格弹层结束(全部)-->
+
+<script src="allfood.js"></script>
+<script>
+    allfood.render();
+</script>
+
+
+<!--轻食-->
+<script id="lightfoodTemplate" type="text/html">
+    <ul class="layui-row layui-col-space2">
+        {{each data.lightfoodlist}}
+        <li class="layui-col-md2 layui-col-xs2">
+            <div style="margin: 10px;border: #EEE 1px solid;">
+                <div class="site-demo-img" id="foodinformationl">
+                    <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-method="offset" data-type="r" data-oid="{{$value.oid}}">
+                    <cite>{{$value.oname}}</cite>
+                </div>
+                <br>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<div id="foodLayerShowl" style="display:none">
+    <script id="fiTemplate2" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.lightfoodlist}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplate' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplate2" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</div>
+
+
+<script src="lightfood.js"></script>
+<script>
+    lightfood.render();
+</script>
+
+
+<!--蛋糕-->
+<script id="cakeTemplate" type="text/html">
+    <ul class="layui-row layui-col-space2">
+        {{each data.cakelist}}
+        <li class="layui-col-md2 layui-col-xs2">
+            <div style="margin: 10px;border: #EEE 1px solid;">
+                <div class="site-demo-img" id="foodinformationc">
+                    <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-method="offset" data-type="r" data-oid="{{$value.oid}}">
+                    <cite>{{$value.oname}}</cite>
+                </div>
+                <br>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<div id="foodLayerShowc" style="display:none">
+    <script id="fiTemplatec" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.cakelist}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplatec' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplatec" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</div>
+
+<script src="cake.js"></script>
+<script>
+    cake.render();
+</script>
+
+
+<!--甜品-->
+<script id="sweetmentTemplate" type="text/html">
+    <ul class="layui-row layui-col-space2">
+        {{each data.sweetmentlist}}
+        <li class="layui-col-md2 layui-col-xs2">
+            <div style="margin: 10px;border: #EEE 1px solid;">
+                <div class="site-demo-img" id="foodinformations">
+                    <img id="imgg" src="{{$value.oimg}}" class="layui-upload-img" data-method="offset" data-type="r" data-oid="{{$value.oid}}">
+                    <cite>{{$value.oname}}</cite>
+                </div>
+                <br>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+
+<div id="foodLayerShows" style="display:none">
+    <script id="fiTemplates" type="text/template">
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row layui-col-space40">
+                {{each data.data.sweetmentlist}}
+                {{if $value.oid==data.currentOid}}
+                {{include 'scoreTemplates' $value}}
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </script>
+
+
+    <script id="scoreTemplates" type="text/html">
+        {{each foodinformationlist}}
+        <div class="layui-col-md3 layui-col-xs3">
+            <div class="layui-card" style="height: 150px">
+                <div class="divfid" data-fprice="{{$value.fprice}}" data-fname="{{$value.fname}}"
+                     data-fid="{{$value.fid}}">
+                    <div id="gkd"> {{$value.fname}}</div>
+                </div>
+                <div class="fpriceclass">¥{{$value.fprice}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</div>
+
+
+<script src="sweetment.js"></script>
+<script>
+    sweetment.render();
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+

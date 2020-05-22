@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4005c51d-5618-41c4-b345-114871dcb88f" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Food.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/Food.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1860">
+              <caret line="93" column="51" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coupon.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/coupon.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/layuiAdmin.std-v1.2.1/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="219" />
+    <option name="y" value="76" />
+    <option name="width" value="1070" />
+    <option name="height" value="643" />
+  </component>
+  <component name="ProjectId" id="1b18aoAE25RuZPDEuPNojCdjRcH" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiadmin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiadmin" type="462c0819:PsiDirectoryNode" />
+              <item name="layui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiadmin" type="462c0819:PsiDirectoryNode" />
+              <item name="style" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiadmin" type="462c0819:PsiDirectoryNode" />
+              <item name="tpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="YXJ" type="b2602c69:ProjectViewProjectNode" />
+              <item name="YXJ" type="462c0819:PsiDirectoryNode" />
+              <item name="layuiAdmin.std-v1.2.1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\views\component\util" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\views\home" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\dist\views\user" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\layuiadmin\layui\css\modules" />
+      <recent name="E:\YXJ\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\YXJ\layui\lay" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\layuiadmin\layui\images" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\views\home" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\layuiadmin\style\res\template" />
+      <recent name="E:\YXJ\layuiAdmin.std-v1.2.1\src\layuiadmin\layui\images\face" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method>
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+      <method>
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="xiadan02.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/YXJ/layuiAdmin.std-v1.2.1/src/views/home/xiadan02.html" />
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+      <method>
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.xiadan02.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4005c51d-5618-41c4-b345-114871dcb88f" name="Default" comment="" />
+      <created>1584174725760</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584174725760</updated>
+      <workItem from="1584174727112" duration="19349000" />
+      <workItem from="1584200345374" duration="5940000" />
+      <workItem from="1584207178141" duration="5814000" />
+      <workItem from="1584233243126" duration="52571000" />
+      <workItem from="1584375223001" duration="521000" />
+      <workItem from="1584376103579" duration="11769000" />
+      <workItem from="1584423557951" duration="7238000" />
+      <workItem from="1584432376201" duration="8069000" />
+      <workItem from="1584446314405" duration="3474000" />
+      <workItem from="1584457532839" duration="34766000" />
+      <workItem from="1584544093276" duration="32086000" />
+      <workItem from="1584673533131" duration="31840000" />
+      <workItem from="1584725477863" duration="1250000" />
+      <workItem from="1584769182170" duration="40229000" />
+      <workItem from="1584838335508" duration="14786000" />
+      <workItem from="1584864347407" duration="15310000" />
+      <workItem from="1584887923213" duration="859000" />
+      <workItem from="1584946816483" duration="88941000" />
+      <workItem from="1585158073630" duration="1381000" />
+      <workItem from="1585159501051" duration="844000" />
+      <workItem from="1585160553447" duration="5739000" />
+      <workItem from="1585281686006" duration="22291000" />
+      <workItem from="1585475238678" duration="37647000" />
+      <workItem from="1585633394734" duration="9259000" />
+      <workItem from="1585670780686" duration="1204000" />
+      <workItem from="1585672138965" duration="1997000" />
+      <workItem from="1585675016122" duration="6203000" />
+      <workItem from="1585749450631" duration="5707000" />
+      <workItem from="1585771216606" duration="482000" />
+      <workItem from="1585813393237" duration="13696000" />
+      <workItem from="1585849145447" duration="6366000" />
+      <workItem from="1585898769732" duration="26128000" />
+      <workItem from="1585929149688" duration="10745000" />
+      <workItem from="1585982094559" duration="6769000" />
+      <workItem from="1585989091599" duration="14791000" />
+      <workItem from="1586013648331" duration="23687000" />
+      <workItem from="1586116954337" duration="12124000" />
+      <workItem from="1586178439536" duration="13579000" />
+      <workItem from="1586356353823" duration="18907000" />
+      <workItem from="1586477405286" duration="12448000" />
+      <workItem from="1586539764492" duration="22427000" />
+      <workItem from="1586629350993" duration="6511000" />
+      <workItem from="1587602222087" duration="6501000" />
+      <workItem from="1587700456674" duration="104000" />
+      <workItem from="1587787503192" duration="185000" />
+      <workItem from="1587788316924" duration="16026000" />
+      <workItem from="1587902402167" duration="129000" />
+      <workItem from="1589349786683" duration="299000" />
+      <workItem from="1590137830230" duration="2227000" />
+      <workItem from="1590141872330" duration="361000" />
+      <workItem from="1590142835233" duration="142000" />
+      <workItem from="1590143055090" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="162000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25358167" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="javascript-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2000">
+          <caret line="100" column="31" lean-forward="true" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/Food.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="93" column="51" lean-forward="true" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/coupon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/Food.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="93" column="51" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/home/coupon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layuiAdmin.std-v1.2.1/src/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

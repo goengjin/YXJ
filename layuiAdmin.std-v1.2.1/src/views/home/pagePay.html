@@ -1,0 +1,735 @@
+﻿<!DOCTYPE html>
+<html xmlns:http="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 控制台主页一</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="../../../../js/template-web.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <script>
+        $(document).ready(function(){
+            $(function(){
+                var count=$('#beneprice');
+                var bf=count.text();
+                var a=$('#bkp').text();
+                a=bf;
+                })
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+
+            <div class="layui-col-md4" style="height: 800px">
+                <div class="layui-card" style="height: 700px">
+                    <div class="layui-card-body layui-text">
+                        <a href="./pageOrder.html" class="layui-btn layui-btn-primary">&lt;返回点单</a>
+
+                        <div id="FoodShow"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md12">
+                        <div class="layui-card" style="height: 700px">
+                            <div id="PaymentShow"></div>
+                            <div id="MixPayShow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'console']);
+    </script>
+
+
+    <!--左侧食物信息开始-->
+    <script id="FoodTemplate" type="text/html">
+        <div id="foodl">
+            {{each data.basket}}
+            <div class="layui-row layui-col-space15" style="margin-top: 10px;border-bottom: #EEE 1px solid">
+                <div class="layui-col-md2 layui-col-xs2">
+                    <div class="layui-status-img"><a href="javascript:;"><img src="../../layuiadmin/layui/images/kiko.png" style="width: 65px;height: 65px"></a></div>
+                </div>
+                <div class="layui-col-md6 layui-col-xs6" style="margin-top: 14px">
+                    <div class="txt" style="margin-left: 20px;margin-top: -5px">
+                        <p>{{$value.fname}}</p>
+                        <span style=" color: #EA5433;"> ¥{{$value.fprice}}</span>&nbsp;&nbsp;&nbsp;<s>¥{{$value.preprice}}</s>
+                    </div>
+                </div>
+                <div class="layui-col-md3 layui-col-xs3">
+                </div>
+                <div class="layui-col-md1 layui-col-xs1" style="margin-top: 18px">
+                    ×{{$value.fnum}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <div id="calinfo">
+            <div><span>原价金额：</span>  <span class="lie">¥<span id="costprice">{{data.totalMoney}}</span></span></div>
+        </div>
+
+        <div id="bene">
+            <div><span>优惠金额：</span>  <span class="lie">- ¥<span id="beneprice">{{data.benefitMoney}}</span></span></div>
+        </div>
+
+        <div id="press">
+            <div><span>配送费：</span>  <span class="lie">- ¥<span id="pressprice">{{data.logisticsMoney}}</span></span></div>
+        </div>
+        <div id="border"></div>
+        <div id="orderall">
+            <div><span style="font-size: 24px">商品&nbsp;&nbsp;({{data.basket.length}})</span>  <span id="kok">¥{{data.payMoney}}</span></div>
+        </div>
+    </script>
+
+    <script src="Food.js"></script>
+    <script>
+        Food.render();
+    </script>
+
+    <!--左侧食物信息结束-->
+
+
+
+    <!--右侧支付信息开始-->
+    <!--混合支付开始-->
+    <script id="MixPayTemplate" type="text/html">
+        <div id="hunhezhifu">
+            <div style="width: 100%;text-align: center">
+                <div id="c1">
+
+                    <span style="color: #EA5433;margin-left: 45px;margin-top:30px;font-size:30px;display: inline-block">¥<input id="mixone" onchange="oneinput(this.id)"></span>
+                    <div class="aline"><span class="xian">——————&ensp;</span>支付方式1&ensp;<span class="xian">—————</span></div>
+                    <button id="chose1"><span style="color: #EA5433;margin-left: 10px;margin-top:30px;font-size:20px;display: inline-block">请选择</span></button>
+                    <div class="find-div-body1">
+                        <div class="site-demo-button" id="CashPayM1">
+                            <div><button id="cashpay1" data-method="offset" data-type="r" class="layui-btn">现金</button></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="c3" style="background-color: #FFFFFF">
+                    <span style="font-size: 70px;color: #EA5433;margin-left: 20px;margin-right: 20px;">+</span>
+                </div>
+                <div id="c2">
+                    <span style="color: #EA5433;margin-left: 25px;margin-top:30px;font-size:30px;display: inline-block">¥<input id="mixtwo" value="" ></span>
+                    <div class="aline"><span class="xian">—————&ensp;&ensp;</span>支付方式2&ensp;&ensp;<span class="xian">————-—</span></div>
+                    <button id="chose2"><span style="color: #EA5433;margin-left: 0px;margin-top:30px;font-size:20px;display: inline-block">请选择</span></button>
+                    <div class="find-div-body">
+
+                        <div class="site-demo-button" id="AliPayM2">
+                            <div><button id="alipay2" data-method="offset" data-type="r" class="layui-btn">支付宝</button></div>
+                        </div>
+
+                        <div class="site-demo-button" id="VxPayM2">
+                            <div><button id="vx2" data-method="offset" data-type="r" class="layui-btn">微信</button></div>
+                        </div>
+
+                        <div class="site-demo-button" id="BankCardPayM2">
+                            <div><button id="bankcard2" data-method="offset" data-type="r" class="layui-btn">银行卡</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="surebt" style="margin-top: 210px;text-align: center">
+                <button type="button" class="layui-btn layui-btn-danger" style="width: 150px;height: 40px">确认支付</button>
+            </div>
+        </div>
+
+    </script>
+
+
+
+    <!--混合支付现金支付弹层开始（1）-->
+    <div id="cashpayment1" style="display: none;">
+        <div id="cashpaymentShow1"></div>
+    </div>
+
+
+    <script id="cashpaymentTemplate1" type="text/html">
+        <div>
+            <div style="margin-top: 40px;text-align: center">
+                <div class="kp">应付金额</div>
+                <div class="kp1">输入金额</div>
+                <div class="kp1">找零</div>
+            </div>
+            <form oninput="x.value=parseInt(h.value)-parseInt(g.value)">
+                <input type="number" id="g" class="kp2" readonly value="">
+                <input type="number" id="h" class="kp3">
+                <output name="x" for="g h" class="kp4"></output>
+            </form>
+            <button class="ss">确定</button>
+        </div>
+    </script>
+
+
+
+
+
+
+
+
+    <!--混合支付支付宝弹层开始（2）-->
+    <div id="alipayment2" style="display: none;">
+        <div id="alipaymentShow2"></div>
+    </div>
+    <script id="alipaymentTemplate2" type="text/html">
+        <div style="text-align: center;margin-top: 40px;margin-left: 55px">
+            应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥<input type="number" class="alivalue2" readonly value=""></span>
+        </div>
+        <div style="text-align: center;margin-top: 20px">
+            <img src="{{data.AliPayment2.ercode}}">
+        </div>
+        <div style="margin-top: 5px;text-align: center">
+            请提醒客户扫商家二维码
+        </div>
+        <div style="margin-top: 60px">
+            <input type="text" placeholder="{{data.AliPayment2.AliPaylink}}" style="width: 90px;height: 40px;margin-left: 30px;display: inline-block">
+            <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: -5px;border-radius: 2px">复制支付链接</button>
+            <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: 180px;border-radius: 2px">确定</button>
+        </div>
+    </script>
+
+    <!--混合支付微信弹层开始（2）-->
+    <div id="vxpayment2" style="display: none;">
+        <div id="VxpaymentShow2"></div>
+    </div>
+    <script id="VxpaymentTemplate2" type="text/html">
+        <div style="text-align: center;margin-top: 40px;margin-left: 55px">
+            应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥<input type="number" class="alivalue2" readonly value=""></span>
+        </div>
+        <div style="text-align: center;margin-top: 20px">
+            <img src="{{data.VxPayment2.ercode}}">
+        </div>
+        <div style="margin-top: 5px;text-align: center">
+            请提醒客户扫商家二维码
+        </div>
+        <div style="margin-top: 60px">
+            <input type="text" placeholder="{{data.VxPayment2.AliPaylink}}" style="width: 90px;height: 40px;margin-left: 30px;display: inline-block">
+            <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: -5px;border-radius: 2px">复制支付链接</button>
+            <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: 180px;border-radius: 2px">确定</button>
+        </div>
+    </script>
+
+    <!--混合支付银行卡弹层开始（2）-->
+    <div id="Bankcardpayment2" style="display: none;">
+        <div id="BankcardpaymentShow2"></div>
+    </div>
+    <script id="BankcardpaymentTemplate2" type="text/html">
+        <div style="text-align: center;margin-top: 20px">
+            <div style="text-align: center;margin-top: 25px">
+                <span style="margin-left: 25px">应付金额：</span>&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥<input type="number" class="alivalue2" readonly value=""></span></div>
+            <div style="height: 1.5px;width: 200px;background-color: #EEE;margin-left: 155px;margin-top: 15px"></div>
+            <div style="margin-top: 10px">
+                <p>原价：¥{{data.sumpayable1}}</p>
+                <p style="margin-top: 5px">优惠金额：-&nbsp;¥{{yp}}</p>
+                <p style="margin-top: 5px">配送金额：-&nbsp;¥{{pp}}</p>
+            </div>
+        </div>
+    </script>
+
+    <!--混合支付结束-->
+    <script src="MixPay.js"></script>
+    <script>
+        MixPay.render();
+    </script>
+
+
+
+    <!--支付开始-->
+    <script id="PaymentTemplate" type="text/html">
+        <a href="./pagePay.html" class="layui-btn layui-btn-primary" style="margin-top: 8px;margin-left: 10px;visibility: hidden" id="rerurnPay">&lt;返回支付</a>
+
+        <div class="ec">
+                            <br /><br /> <br/> <br/> <br/>
+                            <span style="font-size: 15px;font-weight:bold">应付金额:</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  style="color: #EA5433;font-weight: bold;font-size:50px">¥<span id="shouldpay">{{data.sumpayable}}</span></span>
+                        </div>
+                        <div class="layui-row layui-col-space10" id="payment" style="margin-left: 10px;width: 98%;padding-top: 25px;position: center">
+                            <div class="layui-col-md3 layui-col-xs3">
+                                <div class="site-demo-button" id="CashPayM">
+                                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent;">
+                                        <div class="my12">
+                                            <img src="../../layuiadmin/layui/images/图层577.png" style="margin-top: 15px;">
+                                            <p style="margin-top: 5px;color: black">现金支付</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="layui-col-md3 layui-col-xs3">
+                                <div class="site-demo-button" id="BalanceM">
+                                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                        <div class="my12">
+                                            <img src="../../layuiadmin/layui/images/余额.png" style="margin-top: 15px">
+                                            <p style="margin-top: 5px;color: black">余额支付</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="layui-col-md3 layui-col-xs3">
+                                <div class="site-demo-button" id="AliPayM">
+                                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                        <div class="my12">
+                                            <img src="../../layuiadmin/layui/images/图层575.png" style="margin-top: 15px">
+                                            <p style="margin-top: 5px;color: black">支付宝支付</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="layui-col-md3 layui-col-xs3">
+                                <div class="site-demo-button" id="VxPayM">
+                                    <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                        <div class="my12">
+                                            <img src="../../layuiadmin/layui/images/微信支付.png" style="margin-top: 15px">
+                                            <p style="margin-top: 5px;color: black">微信支付</p>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="layui-row layui-col-space10" style="margin-left: 10px;width: 98%;padding-top: 185px;position: center">
+                                <div class="layui-col-md3 layui-col-xs3">
+                                    <div class="site-demo-button" id="SmallwhiteboxPayM">
+                                        <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                            <div class="my1" style="margin-left: -15px;margin-right: 10px">
+                                                <div class="yuy">
+                                                    <img src="../../layuiadmin/layui/images/小白盒.png">
+                                                    &nbsp;&nbsp;<span style="color: black">小白盒支付</span>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md3 layui-col-xs3">
+                                    <div class="site-demo-button" id="BankCardPayM">
+                                        <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                            <div class="my1" style="margin-left: -10px;margin-right: 5px">
+                                                <div class="yuy">
+                                                    <img src="../../layuiadmin/layui/images/图层578.png">
+                                                    &nbsp;&nbsp;<span style="color: black">银行卡支付</span>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md3 layui-col-xs3">
+                                    <div class="site-demo-button" id="ThirdPayM">
+                                        <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                            <div class="my1" style="margin-left: -5px;margin-right: 0px">
+                                                <div class="yuy">
+                                                    <img src="../../layuiadmin/layui/images/支付.png">
+                                                    &nbsp;&nbsp;<span style="color:black;font-size: 10px">第三方平台支付</span>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md3 layui-col-xs3">
+                                    <div class="site-demo-button" id="hometicketPayM">
+                                        <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 100%;border-style: none;background-color: transparent">
+                                            <div class="my1">
+                                                <div class="yuy">
+                                                    <img src="../../layuiadmin/layui/images/券.png">
+                                                    &nbsp;&nbsp;<span style="color: black">宅配券支付</span>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="layui-row layui-col-space10" style="margin-left: 10px;width: 98%;padding-top: 115px;position: center">
+                                    <div class="layui-col-md3 layui-col-xs3">
+                                        <div class="site-demo-button" id="monthlybalanceM">
+                                            <button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" style="width: 98%;border-style: none;background-color: transparent">
+                                                <div class="my1" style="margin-left: -30px;margin-right: 15px">
+                                                    <div class="yuy">
+                                                        <img src="../../layuiadmin/layui/images/月结.png">
+                                                        &nbsp;&nbsp;<span style="color: black">月结</span>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-col-md12 layui-col-xs12" style="text-align: center">
+                                    <div style="width: 310px;margin: 0 auto;margin-top: 70px">
+                                        <button type="button" class="layui-btn layui-btn-primary" style="width: 150px;display: inline-block;float: left;" id="mixpayway"><span style="color: #EA5433">混合支付</span></button>
+                                        <div class="site-demo-button" id="recharge">
+                                            <button button data-method="offset" data-type="r" class="layui-btn layui-btn-normal" type="button" class="layui-btn layui-btn-danger" style="background-color: #EA5433;width: 150px;display: inline-block;margin-left: 10px;text-align: center">去充值</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+
+    <!--支付结束-->
+    <!--右侧支付方式结束-->
+
+    <!--现金支付弹层开始-->
+    <div id="cashpayment" style="display: none;">
+        <div id="cashpaymentShow"></div>
+    </div>
+
+
+      <script id="cashpaymentTemplate" type="text/html">
+                                        <div>
+                                            <div style="margin-top: 40px;text-align: center">
+                                                <div class="kp">应付金额</div>
+                                                <div class="kp1">输入金额</div>
+                                                <div class="kp1">找零</div>
+                                            </div>
+                                            <form oninput="x.value=parseInt(b.value)-parseInt(a.value)">
+                                                <input type="number" id="a" class="kp2" value="{{data.sumpayable}}">
+                                                <input type="number" id="b" class="kp3">
+                                                <output name="x" for="a b" class="kp4"></output>
+                                            </form>
+                                            <button class="ss">确定</button>
+                                        </div>
+                                    </script>
+
+    <!--余额支付弹层开始-->
+    <div id="balancepayment" style="display: none;">
+        <div id="balancepaymentShow"></div>
+    </div>
+
+     <script id="balancepaymentTemplate" type="text/html">
+                                                <div style="text-align: center;margin-top: 20px">
+                                                    应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+                                                    <div style="height: 1.5px;width: 200px;background-color: #EEE;margin-left: 150px;margin-top: 15px"></div>
+                                                    <div style="margin-top: 10px">
+                                                        <p>原价：¥{{pp}}</p>
+                                                        <p style="margin-top: 5px">优惠金额：-&nbsp;¥{{yp}}</p>
+                                                        <p style="margin-top: 5px">配送金额：-&nbsp;¥{{sp}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div style="color: #EA5433;margin-left: 20px;margin-top: 120px;display: inline-block;position: absolute">余额：&nbsp;{{sx}}元</div>
+                                                <button style="border-style: none;background-color: #EEE;color: white;width: 100px;height: 40px;margin-top: 110px;margin-left: 390px;display: inline-block">余额不足</button>
+                                            </script>
+
+    <!--支付宝支付弹层开始-->
+    <div id="alipayment" style="display: none;">
+        <div id="alipaymentShow"></div>
+    </div>
+   <script id="alipaymentTemplate" type="text/html">
+                                                <div style="text-align: center;margin-top: 40px">
+                                                    应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+                                                </div>
+                                                <div style="text-align: center;margin-top: 20px">
+                                                    <img src="{{data.AliPayment1.ercode}}">
+                                                </div>
+                                                <div style="margin-top: 5px;text-align: center">
+                                                    请提醒客户扫商家二维码
+                                                </div>
+                                                <div style="margin-top: 60px">
+                                                    <input type="text" placeholder="{{data.AliPayment1.AliPaylink}}" style="width: 90px;height: 40px;margin-left: 30px;display: inline-block">
+                                                    <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: -5px;border-radius: 2px">复制支付链接</button>
+                                                    <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: 180px;border-radius: 2px">确定</button>
+                                                </div>
+                                            </script>
+
+    <!--微信支付弹层开始-->
+    <div id="vxpayment" style="display: none;">
+        <div id="VxpaymentShow"></div>
+    </div>
+
+   <script id="VxpaymentTemplate" type="text/html">
+                                                <div style="text-align: center;margin-top: 40px">
+                                                    应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+                                                </div>
+                                                <div style="text-align: center;margin-top: 20px">
+                                                    <img src="{{data.VxPayment.ercode}}">
+                                                </div>
+                                                <div style="margin-top: 5px;text-align: center">
+                                                    请提醒客户扫商家二维码
+                                                </div>
+                                                <div style="margin-top: 60px">
+                                                    <input type="text" placeholder="{{data.VxPayment.VxPaylink}}" style="width: 90px;height: 40px;margin-left: 30px;display: inline-block">
+                                                    <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: -5px;border-radius: 2px">复制支付链接</button>
+                                                    <button style="display: inline-block;background-color: #EA5433;color: white;border-style: none;width: 90px;height: 44px;margin-left: 180px;border-radius: 2px">确定</button>
+                                                </div>
+                                            </script>
+
+    <!--小白盒支付弹层开始-->
+    <div id="Smallwhiteboxpayment" style="display: none;">
+        <div id="SmallwhiteboxpaymentShow"></div>
+    </div>
+
+     <script id="SmallwhiteboxpaymentTemplate" type="text/html">
+                                                <div style="text-align: center;margin-top: 20px">
+                                                    应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+                                                    <div style="height: 1.5px;width: 200px;background-color: #EEE;margin-left: 150px;margin-top: 15px"></div>
+                                                    <div style="margin-top: 10px">
+                                                        <p>原价：¥{{pp}}</p>
+                                                        <p style="margin-top: 5px">优惠金额：-&nbsp;¥{{yp}}</p>
+                                                        <p style="margin-top: 5px">配送金额：-&nbsp;¥{{sp}}</p>
+                                                    </div>
+                                                </div>
+                                                <div style="color: #EA5433;margin-left: 20px;margin-top: 120px;display: inline-block;position: absolute">请提醒客户扫小白盒</div>
+                                                <button style="border-style: none;background-color: #EEE;color: white;width: 100px;height: 40px;margin-top: 110px;margin-left: 390px;display: inline-block">余额不足</button>
+                                            </script>
+
+    <!--银行卡支付弹层开始-->
+    <div id="Bankcardpayment" style="display: none;">
+        <div id="BankcardpaymentShow"></div>
+        <button style="border-style: none;background-color: #EA5433;color: white;width: 100px;height: 40px;margin-top: 50px;margin-left: 300px">确定</button>
+    </div>
+    <script id="BankcardpaymentTemplate" type="text/html">
+        <div style="text-align: center;margin-top: 20px">
+            应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+            <div style="height: 1.5px;width: 200px;background-color: #EEE;margin-left: 105px;margin-top: 15px"></div>
+            <div style="margin-top: 10px">
+                <p>原价：¥{{yj}}</p>
+                <p style="margin-top: 5px">优惠金额：-&nbsp;¥<span id="bkp"></span></p>
+                <p style="margin-top: 5px">配送金额：-&nbsp;¥{{pp}}</p>
+            </div>
+        </div>
+    </script>
+
+    <!--第三方平台支付开始-->
+    <div id="Thirdpayment" style="display: none;">
+        <div id="ThirdpaymentShow"></div>
+    </div>
+    <script id="ThirdpaymentTemplate" type="text/html">
+        <div style="text-align: center;margin-top: 50px">
+            应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+            <div id="spje"></div>
+        </div>
+        <div class="layui-form-item" style="text-align: left">
+            <label class="layui-form-label" id="pleasechose">请选择&nbsp;：</label>
+            <div class="layui-input-inline">
+                <select name="quiz1" id="quizl" >
+                    <option value="">口碑</option>
+                    <option value="">{{data.Thirdpayment.v1}}</option>
+                    <option value="">{{data.Thirdpayment.v2}}</option>
+                    <option value="">{{data.Thirdpayment.v3}}</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="quiz1" id="selectbox">
+                    <option value="">50元</option>
+                    <option value="">{{data.Thirdpayment.f1}}</option>
+                    <option value="">{{data.Thirdpayment.f2}}</option>
+                    <option value="">{{data.Thirdpayment.f3}}</option>
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入券码" class="layui-input" style="margin-left: -160px;margin-top: 20px;height: 40px;border-radius: 5px">
+            </div>
+            <div class="layui-input-inline">
+                <button style="border: #EA5433 1px solid;background-color: white;color: #EA5433;height: 40px;width: 150px;display: inline-block;margin-top: 20px;margin-left: -150px;border-radius: 5px">添加</button>
+            </div>
+        </div>
+        <button style="color: white;background-color: #EA5433;border-style: none;width: 150px;height: 50px;margin-left: 750px;border-radius:5px;margin-top: 200px">确定</button>
+    </script>
+
+    <!--宅配券支付开始-->
+    <div id="hometicketpayment" style="display: none;">
+        <div id="hometicketpaymentShow"></div>
+    </div>
+    <script id="hometicketpaymentTemplate" type="text/html">
+        <div style="text-align: center;margin-top: 20px">
+            应付金额：&nbsp;&nbsp;<span style="color: #EA5433;font-size: 30px">¥{{data.sumpayable}}</span>
+            <div style="height: 1.5px;width: 200px;background-color: #EEE;margin-left: 150px;margin-top: 15px"></div>
+            <div style="margin-top: 10px">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">总金额：</label>
+                    <div class="layui-input-block" style="width: 350px">
+                        <input type="text" name="title" width="100px" lay-verify="title" autocomplete="off" placeholder="请输入宅配券金额" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="color: red;display: inline-block;margin-left: 205px;margin-top: 40px">宅配券总额{{data.hometicketpayment.ticketsum}}.金额{{data.hometicketpayment.enough}}</div>
+        <button style="border-style: none;background-color: #EEE;color: white;width: 100px;height: 40px;display: inline-block">余额不足</button>
+    </script>
+
+    <!--月结开始-->
+    <div id="monthlybalance" style="display: none;">
+        <div id="monthlybalanceShow"></div>
+    </div>
+    <script id="monthlybalanceTemplate" type="text/html">
+        <form class="layui-form" action="" lay-filter="test1" style="margin-top: 20px;margin-left: 15px">
+
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label">搜索选择框</label>
+                <div class="layui-input-inline">
+                    <select name="modules" lay-verify="required" lay-search="" style="z-index: 2000;position: absolute">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="1">招商银行</option>
+                        <option value="2">金华银行</option>
+                        <option value="3">工商银行</option>
+                        <option value="4">金华成泰银行</option>
+                        <option value="5">金华分行</option>
+                        <option value="6">温州银行</option>
+                        <option value="7">工农银行</option>
+                        <option value="8">邮政银行</option>
+                        <option value="9">中国银行</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div style="margin-left: 40px;margin-top: 10px">商家列表：</div>
+        <div style="height: 400px;width: 1020px;margin-left: 35px;margin-top: 10px">
+            {{each data.banklist}}
+            <div class="bank" data-id="{{$value.bid}}">
+                <div style="float: left;margin-left: 35px">{{$value.bank}}</div>
+                <div id="img" style="float: right;"><img class="lkl" src="../../layuiadmin/layui/images/勾.png" style="width: 20px;height: 20px;margin-right: 10px;display: none"></div>
+            </div>
+            {{/each}}
+            <button style="background-color: #EA5433;border-style: none;color: white;width: 120px;height: 40px;margin-left: 880px;margin-top: 180px;">确定</button>
+        </div>
+    </script>
+    <!--月结结束-->
+
+
+
+    <!--去充值弹层-->
+    <div id='rechargeShow' style="display : none"></div>
+    <script type="text/html" id="rechargeTemplate">
+        <div class="layui-col-md12">
+            <div class="layui-card" style="height: 700px">
+
+                <div class="ec" style="height: 50px">
+                    <button class="layui-btn layui-btn-primary" id="quo" onclick="layer.closeAll();"><span id="quoi">< 返回支付</span></button>
+                    <br/><span id="chongzhiya">充值</span>
+                </div>
+
+                <br/><span style="margin-left: 20px;font-weight: bold"> 选择金额</span>
+
+                <div class="price"  style="display: flex;flex-direction: row;flex-wrap:wrap;justify-content:space-between;margin-left: 20px;margin-right: 20px">
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">100元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">200元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">300元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">400元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <div class="mp">
+                            <p class="mp">500元</p>
+                        </div>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">800元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">1000元</p>
+                    </div>
+
+                    <div class="my123" style="height: 80px">
+                        <p class="mp">其他金额</p>
+                    </div>
+                </div>
+
+
+
+
+                </br><span style="margin-left: 20px;font-weight: bold"> 选择支付方式</span>
+
+                <div class="layui-row layui-col-space10" style="margin-left: 10px;width: 98%;padding-top: 20px;position: center">
+
+
+                    <div class="layui-col-md4">
+                        <div class="my12">
+                            <img src="../../layuiadmin/layui/images/图层577.png" style="margin-top: 15px">
+                            <p style="margin-top: 10px">现金支付</p>
+                        </div>
+                    </div>
+
+                    <div class="layui-col-md4">
+                        <div class="my12">
+                            <img src="../../layuiadmin/layui/images/图层575.png" style="margin-top: 15px">
+                            <p style="margin-top: 10px">支付宝支付</p>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="my12">
+                            <img src="../../layuiadmin/layui/images/微信支付.png" style="margin-top: 15px">
+                            <p style="margin-top: 10px">微信支付</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-row layui-col-space10" style="margin-left: 10px;width: 98%;padding-top: 15px;position: center">
+                    <div class="layui-col-md6">
+                        <div class="my1">
+                            <div class="yuy">
+                                <img src="../../layuiadmin/layui/images/小白盒.png">
+                                &nbsp;&nbsp;<span>小白盒支付</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="my1">
+                            <div class="yuy">
+                                <img src="../../layuiadmin/layui/images/图层578.png">
+                                &nbsp;&nbsp;<span>银行卡支付</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md12">
+                    <div class="sureb1">
+                        <button type="button" class="layui-btn layui-btn-danger" id="re" style="margin-top: 80px;left: 40%">确认充值</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </script>
+
+
+    <script src="Payment.js"></script>
+    <script>
+        Payment.render();
+    </script>
+
+
+
+</body>
+
+</html>
+
